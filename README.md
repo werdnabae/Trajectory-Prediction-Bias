@@ -72,18 +72,21 @@ python tools/**INSERT_DATASET**/eval_deterministic --dataset **INSERT_DATASET** 
 ```
 
 ### Options for \*\*INSERT_AGE\*\*
-JAAD: all, child, adult, elderly, no_label
+**JAAD:** all, child, adult, elderly, no_label
 
-PIE: all, child, adult, elderly
+**PIE:** all, child, adult, elderly
 
-TITAN: all, child, adult, elderly
+**TITAN:** all, child, adult, elderly
 
 ### Options for \*\*INSERT_GENDER\*\*
-JAAD and PIE: all, male, female
-TITAN: all
+**JAAD:** all, male, female
+
+**PIE:** all, male, female
+
+**TITAN:** all
 
 ## Analysis
-Analysis was done using various Jupyter notebooks. They have been provided in the "notebooks" folder.
+Data analysis was done using various Jupyter notebooks. They have been provided in the "notebooks" folder.
 
 ## Citation
 ```
