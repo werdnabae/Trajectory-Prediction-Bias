@@ -36,7 +36,7 @@ cd BiTraP
 python tools/train.py --config_file **DIR_TO_THE_YML_FILE** 
 ```
 ### BiTraP-NP
-set K in bitrap_np_*dataset* to 20.
+set K in bitrap_np_\*INSERT_DATASET\* to 20.
 ```
 cd BiTraP
 python tools/train.py --config_file **DIR_TO_THE_YML_FILE** 
@@ -52,14 +52,14 @@ A .pkl file will be generated after each test. This will be used later for the d
 
 
 ### BitraP-D
-set K in bitrap_np_\*DATASET\* to 1.
+set K in bitrap_np_\*INSERT_DATASET\* to 1.
 ```
 cd BiTraP
 python tools/test.py --config_file configs/bitrap_np_PIE.yml CKPT_DIR **DIR_TO_CKPT** TEST.AGE **INSERT_AGE** TEST.SPLIT TEST TEST.GENDER **GENDER**
 ```
 
 ### BiTraP-NP
-set K in bitrap_np_*dataset* to 20.
+set K in bitrap_np_\*INSERT_DATASET\* to 20.
 ```
 cd BiTraP
 python tools/test.py --config_file configs/bitrap_np_PIE.yml CKPT_DIR **DIR_TO_CKPT** TEST.AGE **AGE** TEST.SPLIT TEST TEST.GENDER **GENDER** --split test --age **INSERT_AGE** --gender **INSERT_GENDER**
@@ -86,7 +86,7 @@ python tools/**INSERT_DATASET**/eval_deterministic --dataset **INSERT_DATASET** 
 **TITAN:** all
 
 ## Analysis
-Data analysis was done using various Jupyter notebooks. They have been provided in the "notebooks" folder.
+Data analysis was done using various Jupyter notebooks. They have been provided in the "notebooks" folder, along with the .pkl files generated from testing.
 
 ## Citation
 ```

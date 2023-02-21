@@ -1,0 +1,6 @@
+[submodule "BiTraP"]
+	path = BiTraP
+	url = git@github.com:werdnabae/BiTrap.git
+[submodule "SGNet"]
+	path = SGNet
+	url = git@github.com:werdnabae/SGNet.pytorch.git
