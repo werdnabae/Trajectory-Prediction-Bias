@@ -29,14 +29,58 @@ We provide all of our utilized checkpoints in the checkpoints folder.
 
 Training commands if you would like to train the models yourself:
 
-###
+### BiTraP-D
+set K in bitrap_np_\*INSERT_DATASET\* to 1.
+```
+cd BiTraP
+python tools/train.py --config_file **DIR_TO_THE_YML_FILE** 
+```
+### BiTraP-NP
+set K in bitrap_np_*dataset* to 20.
+```
+cd BiTraP
+python tools/train.py --config_file **DIR_TO_THE_YML_FILE** 
+```
+### SGNet
+```
+cd SGNet
+python tools/**INSERT_DATASET**/train_deterministic --dataset **INSERT_DATASET** --model SGNet 
+```
 
 ## Testing
 A .pkl file will be generated after each test. This will be used later for the data analysis.
 
-### BiTraP
+
+### BitraP-D
+set K in bitrap_np_\*DATASET\* to 1.
+```
+cd BiTraP
+python tools/test.py --config_file configs/bitrap_np_PIE.yml CKPT_DIR **DIR_TO_CKPT** TEST.AGE **INSERT_AGE** TEST.SPLIT TEST TEST.GENDER **GENDER**
+```
+
+### BiTraP-NP
+set K in bitrap_np_*dataset* to 20.
+```
+cd BiTraP
+python tools/test.py --config_file configs/bitrap_np_PIE.yml CKPT_DIR **DIR_TO_CKPT** TEST.AGE **AGE** TEST.SPLIT TEST TEST.GENDER **GENDER** --split test --age **INSERT_AGE** --gender **INSERT_GENDER**
+```
 
 ### SGNet
+```
+cd SGNet
+python tools/**INSERT_DATASET**/eval_deterministic --dataset **INSERT_DATASET** --model SGNet --checkpoint **DIR_TO_CKPT** --split test --age **INSERT_AGE** --gender **INSERT_GENDER**
+```
+
+### Options for \*\*INSERT_AGE\*\*
+JAAD: all, child, adult, elderly, no_label
+
+PIE: all, child, adult, elderly
+
+TITAN: all, child, adult, elderly
+
+### Options for \*\*INSERT_GENDER\*\*
+JAAD and PIE: all, male, female
+TITAN: all
 
 ## Analysis
 Analysis was done using various Jupyter notebooks. They have been provided in the "notebooks" folder.
