@@ -1,0 +1,37 @@
+# Byte-compiled / optimized / cached Python files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Experiment tracking / logs
+wandb/
+runs/
+*.log
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Note: model checkpoints (checkpoints/**/*.pth) and the test-output
+# pickles under notebooks/ (*.pkl) are intentionally committed and are
+# therefore NOT ignored here.

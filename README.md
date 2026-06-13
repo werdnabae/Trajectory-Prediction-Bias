@@ -1,16 +1,26 @@
 # Discovering and Understanding Algorithmic Biases in Autonomous Pedestrian Trajectory Predictions
 
-[Andrew Bae](andrewbae.me), [Susu Xu](http://susu-xu.com/)
+[Andrew Bae](https://andrewbae.me), [Susu Xu](http://susu-xu.com/)
 
 This repo contains the code for our workshop paper: [Discovering and Understanding Algorithmic Biases in Autonomous Pedestrian Trajectory Predictions](https://dl.acm.org/doi/pdf/10.1145/3560905.3568433), published in [The Fourth Workshop on Continual and Multimodal Learning for Internet of Things (CML-IOT 2022)](https://cmliot2022.github.io/) at [SenSys 2022](https://sensys.acm.org/2022/).
 
-## Environment
-Our code was implemented on a desktop computer with an NVIDIA GeForece RTX 3080 10GB. 
+## Overview
+We audit three state-of-the-art pedestrian trajectory prediction models — **BiTraP-D**, **BiTraP-NP**, and **SGNet** — for algorithmic bias across demographic groups (age and gender) on the JAAD, PIE, and TITAN datasets. Each model is evaluated separately on demographic subgroups (e.g. child / adult / elderly, male / female), and the per-group predictions are compared in the analysis notebooks to surface disparities in prediction accuracy.
 
-Install the conda environment from the yml file: 
+## Repository Structure
+- `BiTraP/` — model code for the BiTraP-D and BiTraP-NP predictors (adapted from [BiTraP](https://github.com/umautobots/bidireaction-trajectory-prediction)), including the demographic-aware test splits used in our evaluation.
+- `SGNet/` — model code for the SGNet predictor (adapted from [SGNet.pytorch](https://github.com/ChuhuaW/SGNet.pytorch)).
+- `checkpoints/` — the trained model checkpoints used in the paper, organized by dataset (`JAAD/`, `PIE/`, `TITAN/`).
+- `notebooks/` — Jupyter notebooks for the bias analysis, together with the `.pkl` prediction files produced by the testing scripts.
+- `environment.yaml` — the exact conda environment used to produce our results.
+
+## Environment
+Our code was implemented on a desktop computer with an NVIDIA GeForce RTX 3080 10GB.
+
+Install the conda environment from the yaml file:
 
 ```
-conda env create -f environment.yml
+conda env create -f environment.yaml
 ```
 
 ## Data Preparation
@@ -21,7 +31,7 @@ The [JAAD](https://github.com/ykotseruba/JAAD) and [PIE](https://github.com/aras
 ## Training
 We used the checkpoints provided by the BiTraP authors for the JAAD and PIE datasets. 
 
-Checkpoints for SGNet on JAAD and PIE used to be made availible by the authors, but it seems like their linked folder no longer contain any checkpoints. 
+Checkpoints for SGNet on JAAD and PIE used to be made available by the authors, but it seems like their linked folder no longer contains any checkpoints. 
 
 We trained the models on the TITAN dataset from scratch. 
 
@@ -44,14 +54,14 @@ python tools/train.py --config_file **DIR_TO_THE_YML_FILE**
 ### SGNet
 ```
 cd SGNet
-python tools/**INSERT_DATASET**/train_deterministic --dataset **INSERT_DATASET** --model SGNet 
+python tools/**INSERT_DATASET**/train_deterministic.py --dataset **INSERT_DATASET** --model SGNet 
 ```
 
 ## Testing
 A .pkl file will be generated after each test. This will be used later for the data analysis.
 
 
-### BitraP-D
+### BiTraP-D
 set K in bitrap_np_\*INSERT_DATASET\* to 1.
 ```
 cd BiTraP
@@ -68,7 +78,7 @@ python tools/test.py --config_file configs/bitrap_np_PIE.yml CKPT_DIR **DIR_TO_C
 ### SGNet
 ```
 cd SGNet
-python tools/**INSERT_DATASET**/eval_deterministic --dataset **INSERT_DATASET** --model SGNet --checkpoint **DIR_TO_CKPT** --split test --age **INSERT_AGE** --gender **INSERT_GENDER**
+python tools/**INSERT_DATASET**/eval_deterministic.py --dataset **INSERT_DATASET** --model SGNet --checkpoint **DIR_TO_CKPT** --split test --age **INSERT_AGE** --gender **INSERT_GENDER**
 ```
 
 ### Options for \*\*INSERT_AGE\*\*

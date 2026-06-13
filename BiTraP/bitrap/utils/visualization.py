@@ -26,7 +26,7 @@ def draw_single_pose(img, pose, color=None):
     # if isinstance(pose, torch.Tensor):
     #     pose = pose.type(torch.int)
     if isinstance(pose, np.ndarray):
-        pose = pose.astype(np.int)
+        pose = pose.astype(int)
     else:
         raise TypeError('Unknown pose type {}'.format(type(pose)))    
     # plot points
